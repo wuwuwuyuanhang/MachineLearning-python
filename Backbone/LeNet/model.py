@@ -9,10 +9,10 @@ from torchsummary import summary
 
 
 class LeNet(nn.Module):
-    def __init__(self):
+    def __init__(self, classes_num=10):
         super(LeNet, self).__init__()
         self.conv = nn.Sequential(
-            nn.Conv2d(1, 6, 5),
+            nn.Conv2d(3, 6, 5),
             nn.ReLU(),
             nn.MaxPool2d((2, 2)),
             nn.Conv2d(6, 16, 5),
@@ -24,7 +24,7 @@ class LeNet(nn.Module):
         self.linear = nn.Sequential(
             nn.Linear(120, 84),
             nn.ReLU(),
-            nn.Linear(84, 10)
+            nn.Linear(84, classes_num)
         )
 
     def forward(self, x):
@@ -35,7 +35,7 @@ class LeNet(nn.Module):
 
 
 if __name__ == '__main__':
-    lenet_model = LeNet()
+    lenet_model = LeNet(classes_num=10)
     if torch.cuda.is_available():
         lenet_model = lenet_model.cuda()
-    summary(lenet_model, (1, 32, 32))
+    summary(lenet_model, (3, 32, 32))
