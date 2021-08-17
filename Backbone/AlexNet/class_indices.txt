@@ -1,0 +1,5 @@
+0 Black_footed_Albatross
+1 Crested_Auklet
+2 Groove_billed_Ani
+3 Indigo_Bunting
+4 Laysan_Albatross
